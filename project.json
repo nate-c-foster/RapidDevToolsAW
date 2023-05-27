@@ -1,0 +1,7 @@
+{
+  "title": "Rapid Dev Tools AW",
+  "description": "Rapid Dev Tools for American Water Ignition Projects",
+  "parent": "RapidDevToolsCore",
+  "enabled": true,
+  "inheritable": false
+}

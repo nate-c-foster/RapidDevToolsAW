@@ -1,0 +1,42 @@
+{
+  "scope": "DG",
+  "documentation": "Description: This query is to get the max order number under a specific Parent Location ID\nAuthor: Derrick Chambers\nCompany: Flexware Innovation\nDate Created: 4/28/2021\nDate Updated: NA",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "description": "Description: This query is to get the max order number under a specific Parent Location ID\nAuthor: Derrick Chambers\nCompany: Flexware Innovation\nDate Created: 4/28/2021\nDate Updated: NA",
+    "type": "ScalarQuery",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "19575015abf7907f4b2da3085983fed9371622ba8f1afcb0de78d374772f73df",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "ncf5684",
+      "timestamp": "2023-05-25T01:51:29Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "parentLocationID",
+        "sqlType": 3
+      }
+    ]
+  }
+}

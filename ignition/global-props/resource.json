@@ -1,0 +1,16 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "data.bin"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "ncf5684",
+      "timestamp": "2023-05-20T20:12:07Z"
+    },
+    "lastModificationSignature": "7f01eadded9387c5dab394bcd3e28cad3414e7b9f135a1a7776b60d4df180bd2"
+  }
+}
