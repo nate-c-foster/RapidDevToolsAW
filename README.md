@@ -1,2 +1,2 @@
 # RapidDevToolsAW
-Rapid Dev Tools for American Water Ignition Projects
+Rapid development tools for American Water Ignition SCADA projects. This project inherits from [RapidDevToolsCore](https://github.com/nate-c-foster/RapidDevToolsCore).
