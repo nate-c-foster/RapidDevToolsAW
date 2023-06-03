@@ -171,15 +171,6 @@ def getLocationDetails(locationID, modelDS):
 	"""
 	Get the location details for the given locationID.
 	
-	
-	
-	Long descriptionlkjasdf
-	lkasdjfasdf
-	lkasdjfasldf
-	laksdjflas
-	
-	
-	
 	Args: 
 		locationID (int): The location ID.
 		modelDS (Dataset): The location model dataset.
@@ -247,22 +238,22 @@ def getChildrenComponents(rootTagPath):
 		rootTagPath (str): The parent tag path.
 	
 	Returns:
-		A list of childred components where each element is a dictionary with keys {'name','type'}.
+		A list of children components where each element is a dictionary with keys {'name','type'}.
 	"""
 
 	components = []
 	
-	# Also look in folders with these names:
-	folderFilter = ['Alarming', 'Alarms']
-		
+
 	results = system.tag.browse(rootTagPath, {"recursive":False, "tagType":"UdtInstance"})
 	for result in results:
-		if "Component" in str(result['typeId']):
-			components.append({'name':result['name'], 'type':result['typeId'][len("Components/"):]})
+		if "Component" in str(result['typeId']) or "User Defined" in str(result['typeId']):
+			components.append({'name':result['name'], 'type':result['typeId']})
 			
 	components.sort(key = lambda c : c['type'])		
 			
-	
+			
+	# Also look in folders with these names for udt instances:
+	folderFilter = ['Alarming', 'Alarms']	
 	folders = system.tag.browse(rootTagPath, {"recursive":False, "tagType":"Folder"})	
 	for folder in folders:
 		folderPath = folder['fullPath']
@@ -270,8 +261,8 @@ def getChildrenComponents(rootTagPath):
 		if folderName in folderFilter:
 			results = system.tag.browse(folderPath, {"recursive":False, "tagType":"UdtInstance"})
 			for result in results:
-				if "Component" in str(result['typeId']):
-					components.append({'name':result['name'], 'type':result['typeId'][len("Components/"):]})
+				if "Component" in str(result['typeId'])  or "User Defined" in str(result['typeId']):
+					components.append({'name':result['name'], 'type':result['typeId']})
 					
 				
 	return components

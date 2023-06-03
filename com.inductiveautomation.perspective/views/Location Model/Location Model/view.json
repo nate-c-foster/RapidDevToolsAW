@@ -843,14 +843,16 @@
                                 "props": {
                                   "direction": "column",
                                   "elementPosition": {
-                                    "basis": "25px",
+                                    "basis": "auto",
                                     "grow": 0,
                                     "shrink": 0
                                   },
                                   "elementStyle": {
                                     "borderTopColor": "var(--neutral-30)",
                                     "borderTopStyle": "solid",
-                                    "borderTopWidth": "1px"
+                                    "borderTopWidth": "2px",
+                                    "minHeight": "25px",
+                                    "padding": "2px 0px"
                                   },
                                   "path": "Global Components/Forms/Label Value Item",
                                   "useDefaultViewHeight": false,
@@ -933,14 +935,16 @@
                                 "props": {
                                   "direction": "column",
                                   "elementPosition": {
-                                    "basis": "25px",
+                                    "basis": "auto",
                                     "grow": 0,
                                     "shrink": 0
                                   },
                                   "elementStyle": {
                                     "borderTopColor": "var(--neutral-30)",
                                     "borderTopStyle": "solid",
-                                    "borderTopWidth": "1px"
+                                    "borderTopWidth": "1px",
+                                    "minHeight": "25px",
+                                    "padding": "2px 0px"
                                   },
                                   "path": "Global Components/Forms/Label Value Item",
                                   "useDefaultViewHeight": false,
