@@ -1,7 +1,7 @@
 {
   "custom": {},
   "params": {
-    "LocationID": 306
+    "LocationID": 1062
   },
   "propConfig": {
     "params.LocationID": {
@@ -155,7 +155,7 @@
                   },
                   "transforms": [
                     {
-                      "code": "\n\tqueryPath \u003d \"Location Model/\" + value + \"/getLocationTypesDropdown\"\n\t\n\treturn system.db.runNamedQuery(queryPath)",
+                      "code": "\n\tqueryPath \u003d \"Location Model/\" + value + \"/getLocationTypes\"\n\t\n\treturn system.db.runNamedQuery(queryPath)",
                       "type": "script"
                     }
                   ],
@@ -213,83 +213,6 @@
                 "binding": {
                   "config": {
                     "struct": {
-                      "$": [
-                        "\"ds\"",
-                        192,
-                        1677948623533
-                      ],
-                      "$columns": [
-                        {
-                          "data": [
-                            1,
-                            2,
-                            3,
-                            4,
-                            5,
-                            6,
-                            7,
-                            8,
-                            16,
-                            17,
-                            18,
-                            19,
-                            21,
-                            23,
-                            25,
-                            26,
-                            27,
-                            28,
-                            29,
-                            30,
-                            31,
-                            32,
-                            33,
-                            34,
-                            1024,
-                            1025,
-                            1026,
-                            2024,
-                            2025
-                          ],
-                          "name": "\"LocationTypeDefinitionID\"",
-                          "type": "\"Integer\""
-                        },
-                        {
-                          "data": [
-                            "\"Flexware Innovation\"",
-                            "\"State\"",
-                            "\"Water System\"",
-                            "\"Waste Water System\"",
-                            "\"Ground Water Plant\"",
-                            "\"Surface Water Plant\"",
-                            "\"General Process\"",
-                            "\"General Process Stage\"",
-                            "\"Analog Input\"",
-                            "\"Military Base\"",
-                            "\"Water Remote Sites\"",
-                            "\"Wastewater Remote Sites\"",
-                            "\"Motor\"",
-                            "\"LS Simple\"",
-                            "\"Control Valve (Open/Close)\"",
-                            "\"Control Valve (Modulating)\"",
-                            "\"Digital Alarm\"",
-                            "\"Generator (Simple)\"",
-                            "\"Alternator6\"",
-                            "\"Alt Valve 7595\"",
-                            "\"PIDE\"",
-                            "\"StepUpDown\"",
-                            "\"ChemDose\"",
-                            "\"Trim\"",
-                            "\"Motor (TAGS_FB)\"",
-                            "\"Generator (TAGS_FB)\"",
-                            "\"Comm Alarm (TAGS_FB)\"",
-                            "\"Alternator7\"",
-                            "\"General Water System\""
-                          ],
-                          "name": "\"Name\"",
-                          "type": "\"String\""
-                        }
-                      ],
                       "locationTypeID": "{../LocationType.props.value}",
                       "modelDBType": "{session.custom.modelDBType}"
                     },
@@ -297,7 +220,7 @@
                   },
                   "transforms": [
                     {
-                      "code": "\n\tif value[\u0027locationTypeID\u0027]:\n\n\t\tqueryPath \u003d \"Location Model/\" + value[\u0027modelDBType\u0027] + \"/getLocationTypesDefinitionDropdown\"\n\t\treturn system.db.runNamedQuery(queryPath, {\u0027LocationTypeID\u0027: value[\u0027locationTypeID\u0027]})\n\t\t\n\telse:\n\t\treturn []",
+                      "code": "\n\tif value[\u0027locationTypeID\u0027]:\n\n\t\tqueryPath \u003d \"Location Model/\" + value[\u0027modelDBType\u0027] + \"/getLocationTypeDefinitions\"\n\t\treturn system.db.runNamedQuery(queryPath, {\u0027LocationTypeID\u0027: value[\u0027locationTypeID\u0027]})\n\t\t\n\telse:\n\t\treturn []",
                       "type": "script"
                     }
                   ],
