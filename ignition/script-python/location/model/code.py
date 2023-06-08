@@ -210,15 +210,18 @@ def getTreePath(locationID, modelDS):
 
 	parentID = getLocationDetails(locationID, modelDS)['parentID']
 	if parentID:
-		siblingIDs = getLocationDetails(parentID, modelDS)['childrenIDs'].split(',')
-		
-		index = 0
-		if siblingIDs:
-			for i, siblingID in enumerate(siblingIDs):
-				if int(siblingID) == int(locationID):
-					index = i
-					
-		return getTreePath(parentID, modelDS) + '/' + str(index)
+		if getLocationDetails(parentID, modelDS):
+			siblingIDs = getLocationDetails(parentID, modelDS)['childrenIDs'].split(',')
+			
+			index = 0
+			if siblingIDs:
+				for i, siblingID in enumerate(siblingIDs):
+					if int(siblingID) == int(locationID):
+						index = i
+						
+			return getTreePath(parentID, modelDS) + '/' + str(index)
+		else:
+			return ""
 	
 	else:
 		return "0"
@@ -247,7 +250,10 @@ def getChildrenComponents(rootTagPath):
 	results = system.tag.browse(rootTagPath, {"recursive":False, "tagType":"UdtInstance"})
 	for result in results:
 		if "Component" in str(result['typeId']) or "User Defined" in str(result['typeId']):
-			components.append({'name':result['name'], 'type':result['typeId']})
+			typeId = str(result['typeId'])
+			if '_types_/' in typeId:
+				typeId = typeId.split('_types_/')[-1]
+			components.append({'name':result['name'], 'type':typeId})
 			
 	components.sort(key = lambda c : c['type'])		
 			
@@ -262,7 +268,10 @@ def getChildrenComponents(rootTagPath):
 			results = system.tag.browse(folderPath, {"recursive":False, "tagType":"UdtInstance"})
 			for result in results:
 				if "Component" in str(result['typeId'])  or "User Defined" in str(result['typeId']):
-					components.append({'name':result['name'], 'type':result['typeId']})
+					typeId = str(result['typeId'])
+					if '_types_/' in typeId:
+						typeId = typeId.split('_types_/')[-1]
+					components.append({'name':result['name'], 'type':typeId})
 					
 				
 	return components
