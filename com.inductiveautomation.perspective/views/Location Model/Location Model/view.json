@@ -850,7 +850,7 @@
                                   "elementStyle": {
                                     "borderTopColor": "var(--neutral-30)",
                                     "borderTopStyle": "solid",
-                                    "borderTopWidth": "2px",
+                                    "borderTopWidth": "0px",
                                     "minHeight": "25px",
                                     "padding": "2px 0px"
                                   },
@@ -942,7 +942,7 @@
                                   "elementStyle": {
                                     "borderTopColor": "var(--neutral-30)",
                                     "borderTopStyle": "solid",
-                                    "borderTopWidth": "1px",
+                                    "borderTopWidth": "0px",
                                     "minHeight": "25px",
                                     "padding": "2px 0px"
                                   },
