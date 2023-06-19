@@ -619,15 +619,19 @@
                       "custom.modelTagExists": {
                         "binding": {
                           "config": {
-                            "path": "session.custom.modelTagPath"
+                            "struct": {
+                              "modelTagPath": "{session.custom.modelTagPath}",
+                              "tagValue": "tag({session.custom.modelTagPath})"
+                            },
+                            "waitOnAll": true
                           },
                           "transforms": [
                             {
-                              "code": "\n\treturn system.tag.exists(value)",
+                              "code": "\tif system.tag.exists(value[\u0027modelTagPath\u0027]) and value[\u0027tagValue\u0027]:\n\t\treturn True\n\telse:\n\t\treturn False",
                               "type": "script"
                             }
                           ],
-                          "type": "property"
+                          "type": "expr-struct"
                         }
                       },
                       "position.display": {
@@ -707,7 +711,7 @@
                           "component": {
                             "onActionPerformed": {
                               "config": {
-                                "script": "\t\n\tmodelTagPath \u003d self.session.custom.modelTagPath\n\tname \u003d modelTagPath.split(\u0027/\u0027)[-1]\n\tbasePath \u003d \u0027/\u0027.join(modelTagPath.split(\u0027/\u0027)[:-1])\n\t\n\ttag \u003d {\n\t\t\t\"name\": name,\n\t\t\t\"valueSource\": \"memory\",\n\t\t\t\"dataType\": \"DataSet\",\n\t\t\t\"tagType\": \"AtomicTag\"\n\t}\n\t\n\tsystem.tag.configure(basePath, [tag], \"a\")\n\t\n\t\n\tRapidDev.LocationModel.updateModelTag()\n\t\n\tself.parent.parent.getChild(\"Tree\").refreshBinding(\u0027custom.modelTagExists\u0027)"
+                                "script": "\t\n\tmodelTagPath \u003d self.session.custom.modelTagPath\n\tname \u003d modelTagPath.split(\u0027/\u0027)[-1]\n\tbasePath \u003d \u0027/\u0027.join(modelTagPath.split(\u0027/\u0027)[:-1])\n\t\n\ttag \u003d {\n\t\t\t\"name\": name,\n\t\t\t\"valueSource\": \"memory\",\n\t\t\t\"dataType\": \"DataSet\",\n\t\t\t\"tagType\": \"AtomicTag\"\n\t}\n\t\n\tsystem.tag.configure(basePath, [tag], \"a\")\n\t\n\t\n\tlocation.model.updateModelTag()\n\t\n\tself.parent.parent.getChild(\"Tree\").refreshBinding(\u0027custom.modelTagExists\u0027)"
                               },
                               "scope": "G",
                               "type": "script"
