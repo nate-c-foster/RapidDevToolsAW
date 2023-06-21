@@ -651,7 +651,7 @@
                           },
                           "transforms": [
                             {
-                              "code": "\n\trootLocationID \u003d self.session.custom.rootLocationID\n\t\n\t# transfrom the tree with icons\n\tdef treeTransform(item):\n\t\tlocationType \u003d item[\u0027data\u0027][\u0027locationType\u0027]\n\t\tif locationType \u003d\u003d \u0027Process\u0027:\n\t\t\ticon \u003d { \u0027path\u0027: \u0027material/stop\u0027, \u0027color\u0027: \u0027var(--blue-77)\u0027 }\n\t\telse:\n\t\t\ticon \u003d { \u0027path\u0027: \u0027material/view_list\u0027, \u0027color\u0027: \u0027var(--green-77)\u0027 }\n\t\titem[\u0027icon\u0027] \u003d icon\n\t\treturn item\n\n\n\treturn location.model.updateModelTree(rootLocationID, value, expanded\u003dTrue, transformFunction\u003dtreeTransform)[\u0027items\u0027]",
+                              "code": "\n\trootLocationID \u003d self.session.custom.rootLocationID\n\t\n\t# transfrom the tree with icons\n\tdef addIcons(item):\n\t\tlocationType \u003d item[\u0027data\u0027][\u0027locationType\u0027]\n\t\tif locationType \u003d\u003d \u0027Process\u0027:\n\t\t\ticon \u003d { \u0027path\u0027: \u0027material/stop\u0027, \u0027color\u0027: \u0027var(--blue-77)\u0027 }\n\t\telse:\n\t\t\ticon \u003d { \u0027path\u0027: \u0027material/view_list\u0027, \u0027color\u0027: \u0027var(--green-77)\u0027 }\n\t\titem[\u0027icon\u0027] \u003d icon\n\t\treturn item\n\n\n\treturn location.model.updateModelTree(rootLocationID, value, expanded\u003dTrue, transformFunction\u003daddIcons)[\u0027items\u0027]",
                               "type": "script"
                             }
                           ],

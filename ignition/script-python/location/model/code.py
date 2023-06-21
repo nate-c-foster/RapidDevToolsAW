@@ -234,7 +234,7 @@ def getTreePath(locationID, modelDS):
 # Company:        A.W. Schultz
 # Date:           Feb 2023
 #*****************************************************************************************************	
-def getChildrenComponents(rootTagPath):
+def getChildrenComponents(rootTagPath, checkAlarms = True):
 	"""Get all children compents.
 	
 	Args:
@@ -259,19 +259,20 @@ def getChildrenComponents(rootTagPath):
 			
 			
 	# Also look in folders with these names for udt instances:
-	folderFilter = ['Alarming', 'Alarms']	
-	folders = system.tag.browse(rootTagPath, {"recursive":False, "tagType":"Folder"})	
-	for folder in folders:
-		folderPath = folder['fullPath']
-		folderName = folder['name']
-		if folderName in folderFilter:
-			results = system.tag.browse(folderPath, {"recursive":False, "tagType":"UdtInstance"})
-			for result in results:
-				if "Component" in str(result['typeId'])  or "User Defined" in str(result['typeId']):
-					typeId = str(result['typeId'])
-					if '_types_/' in typeId:
-						typeId = typeId.split('_types_/')[-1]
-					components.append({'name':result['name'], 'type':typeId})
+	if checkAlarms:
+		folderFilter = ['Alarming', 'Alarms']	
+		folders = system.tag.browse(rootTagPath, {"recursive":False, "tagType":"Folder"})	
+		for folder in folders:
+			folderPath = folder['fullPath']
+			folderName = folder['name']
+			if folderName in folderFilter:
+				results = system.tag.browse(folderPath, {"recursive":False, "tagType":"UdtInstance"})
+				for result in results:
+					if "Component" in str(result['typeId'])  or "User Defined" in str(result['typeId']):
+						typeId = str(result['typeId'])
+						if '_types_/' in typeId:
+							typeId = typeId.split('_types_/')[-1]
+						components.append({'name':result['name'], 'type':typeId})
 					
 				
 	return components
